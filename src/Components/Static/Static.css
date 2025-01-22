@@ -1,0 +1,343 @@
+/* Define CSS Variables for Reusability */
+:root {
+    --navbar-bg-color: rgb(92, 8, 8);
+    --navbar-text-color: white;
+    --navbar-link-hover-bg-color: #ddd;
+    --navbar-link-hover-text-color: black;
+    --footer-bg-color: rgb(92, 8, 8);
+    --footer-text-color: white;
+    --dark-mode-bg-color: #121212;
+    --dark-mode-text-color: #e0e0e0;
+}
+
+/* --------Navbar------- */
+.logo {
+    color: var(--navbar-text-color);
+    margin-top: 25px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: var(--navbar-bg-color);
+    overflow: hidden;
+    z-index: 1000; /* Ensures the navbar stays on top of other content */
+    padding: 0;
+    margin: 0;
+}
+
+
+.nav-link {
+    display: flex;
+    flex-direction: row;
+    color: var(--navbar-text-color);
+    text-decoration: none;
+    padding: 14px 16px;
+    font-size: 17px;
+    gap: 20px;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: var(--navbar-link-hover-bg-color);
+    color: var(--navbar-link-hover-text-color);
+}
+
+.navbar a.active {
+    background-color: #4CAF50;
+    color: var(--navbar-text-color);
+}
+
+
+/* ----------navbar switch------------------- */
+
+
+.switch { position: relative; 
+    display: inline-block; 
+    width: 40px; 
+    height: 20px; 
+} 
+.switch input {
+     opacity: 0;
+      width: 0; 
+      height: 0; 
+    } 
+.slider { 
+    position: absolute; 
+    cursor: pointer; 
+    top: 0; 
+    left: 0; 
+    right: 0;
+     bottom: 0; 
+     background-color: #ccc; 
+     transition: .4s;
+     }
+
+/* ----------Footer------ */
+.footer {
+   
+        background-color: var(--footer-bg-color); /* Sets the background color using a CSS variable */
+        color: var(--footer-text-color); /* Sets the text color using a CSS variable */
+        text-align: center; /* Centers the text */
+        padding: 20px 0; /* Adds vertical padding */
+    
+}
+
+
+.footer-links {
+    display: flex; /* Uses flexbox for layout */
+    flex-direction: row; /* Aligns items in a row */
+    list-style: none; /* Removes bullet points */
+    justify-content: space-around; /* Distributes space evenly */
+    gap: 20px; /* Adds space between links */
+    padding: 0; /* Removes default padding */
+}
+
+.footer-links li {
+    display: inline; /* Displays list items inline */
+    margin: 0 15px; /* Adds horizontal margin */
+}
+
+.footer-links a {
+    color: var(--footer-text-color); /* Sets link color */
+    text-decoration: none; /* Removes underline from links */
+}
+
+.footer-content {
+    display: flex; /* Uses flexbox for layout */
+    flex-direction: column; /* Aligns items vertically */
+    margin-bottom: 20px; /* Space between content and map */
+}
+
+.footer-location {
+    display: flex; /* Uses flexbox for layout */
+    flex-direction: column; /* Aligns items vertically */
+    margin-bottom: 20px; /* Space below the location section */
+}
+
+
+
+/* ------Toggle------------- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-top: 25px;
+}
+
+.switch-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* ------Dark Mode------------- */
+body.dark-mode {
+    background-color: var(--dark-mode-bg-color);
+    color: var(--dark-mode-text-color);
+}
+
+body.dark-mode .navbar {
+    /* background-color: var(--dark-mode-bg-color); */
+}
+
+body.dark-mode .nav-link {
+    color: var(--dark-mode-text-color);
+}
+body.dark-mode .header {
+    background-color: var(--dark-mode-bg-color);
+    color: white;
+}
+
+body.dark-mode .footer {
+    /* background-color: var(--dark-mode-bg-color); */
+    color: var(--dark-mode-text-color);
+}
+
+/* ------- Media Queries ------- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-link {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .navbar a {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .footer-links {
+        text-align: center;
+    }
+
+    .footer-links li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-link {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .navbar a {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+/* Basic styles from before remain unchanged */
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--navbar-text-color);
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-link {
+        display: none; /* Hide nav links by default */
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .nav-link.show {
+        display: flex; /* Show nav links when toggled */
+    }
+
+    .navbar a {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .footer-links {
+        text-align: center;
+    }
+
+    .footer-links li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger menu on small screens */
+    }
+}
+/* Static.css */
+
+
+/* General styles for the contact page */
+.contact-page {
+    padding: 30px;
+    background: linear-gradient(to right, #f0f4f8, #e0e7ff);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 150px auto;
+    font-family: 'Arial', sans-serif;
+   
+
+}
+
+/* Heading styles */
+.contact-page h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Form styles */
+.contact-page form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input and textarea styles */
+.contact-page input[type="text"],
+.contact-page input[type="email"],
+.contact-page textarea {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.contact-page input[type="text"]:focus,
+.contact-page input[type="email"]:focus,
+.contact-page textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styles */
+.contact-page button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.contact-page button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Label styles */
+.contact-page label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .contact-page {
+        padding: 20px;
+    }
+
+    .contact-page h2 {
+        font-size: 20px;
+    }
+
+    .contact-page button {
+        font-size: 14px;
+    }
+}
